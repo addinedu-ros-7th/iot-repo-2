@@ -1,6 +1,8 @@
 # iot-repo-2
 IoT 프로젝트 2조 저장소. IoT를 활용한 차량 보조 시스템 개발
 ---
+Team Name : Assistant Driving AngelS (ADAS)
+---
 # Feature list
 ||분류|Function(기능)|Description(구체화)|우선순위|
 |:---:|:---:|:---:|---|:---:|
