@@ -20,6 +20,7 @@ Assistant Driving AngelS (ADAS) : IoT를 활용한 차량 보조 시스템 개�
 |:---:|:---:|:---:|---|:---:|
 |1|인식 기능|차선 인식|* 적외선 센서를 이용한 차량 양쪽의 차선 인식|1|
 | |       |       |* 인공지능 딥 러닝 모델을 활용해 차선 인식 정밀도 향상|3|
+| |       |도로 인식|* 인공지능 딥 러닝 모델을 활용해 교차로 인식|3|
 | |       |장애물 인식|* 초음파 센서를 이용한 차량 전,후방의 장애물 인식|1|
 | |       |졸음 인식|* 인공지능 딥 러닝 모델을 활용해 운전자의 상태 모니터링|2|
 |2|주행 기능|전진|* 양 쪽 모터를 정방향으로 회전시켜 차량 전진|1|
@@ -32,5 +33,9 @@ Assistant Driving AngelS (ADAS) : IoT를 활용한 차량 보조 시스템 개�
 |3|알림 기능|후방 경고|* 차량 후방에 장애물이 인식되면 운전자에게 부저나 <br> LED를 통해 경고|2|
 | |       |졸음 경고|* 운전자의 졸음이 감지되면 운전자에게 부저를 통해 경고|2|
 ---
-## **3-2 System Plan List**
-
+## **3-2 Software Configuration**
+![Screenshot from 2024-11-12 19-24-16](https://github.com/user-attachments/assets/c9f790b8-e745-46a1-877a-78beed318bfb)
+---
+## **3-3 Hardware Cofiguration**
+![Screenshot from 2024-11-12 19-25-25](https://github.com/user-attachments/assets/8c0c95b3-a455-4fea-97ed-2fdcf3e762a1)
+---
