@@ -1,6 +1,12 @@
 # iot-repo-2
 ---
-# 1. Team Name & Topic
+# 1. Project Overview 
+- 운전자 부주의 또는 갑작스런 상황 변화로 인한 사고를 예방하고자 함 <br>
+- 아두이노 센서를 이용하여 ‘장애물 탐지 및 차선 탐지' 진행 <br>
+- 센서 정보를 이용하여 ‘차량 모터 컨트롤’ 및 ‘경고등 점등’ 수행 <br>
+- 운전보조 및 경고 시스템을 통해 운전자 보조 기능 개발
+---
+# 2. Team Name & Topic
 ## **Assistant Driving AngelS (ADAS) : IoT를 활용한 차량 보조 시스템 개발**
 
 **팀원 및 담당 업무**
@@ -55,7 +61,21 @@
 ## **3-2 Software Configuration**
 ![image](https://github.com/user-attachments/assets/efd6ef97-082f-46c6-a171-f4b5327aa9bb)
 
-
 ## **3-3 Hardware Cofiguration**
 ![image](https://github.com/user-attachments/assets/cf4ee31b-9634-4cfa-b58b-7e0264ffbbea)
+
+## **3-4 GUI Interface**
+- 전원 버튼 : 시스템 전원 ON/OFF <br>
+- 방향 조향 키 : 앞 / 뒤 / 정지 <br>
+- CAM1 : 사용자 얼굴 인터페이스 <br>
+- CAM2 : 도로 주행 상황 인터페이스 <br>
+- Direction : 진행방향 표시 <br>
+- Distance : 앞/뒤 사물간 거리 표시 <br>
+- Object : CAM2에서 인식된 사물 정보 표시 <br>
+- Lane : 차선 인식 여부 표시 <br>
+- Drowsy : 졸음 여부 표시 <br>
+![Screenshot from 2024-11-13 15-58-57](https://github.com/user-attachments/assets/0ce044d0-dad1-4b2b-8fae-c3c2957d07c2)
+
+## **3-5 Road Design
+![image](https://github.com/user-attachments/assets/cb727393-f913-4fb1-bf53-42f14477626c)
 ---
