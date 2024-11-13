@@ -77,5 +77,6 @@
 ![Screenshot from 2024-11-13 15-58-57](https://github.com/user-attachments/assets/0ce044d0-dad1-4b2b-8fae-c3c2957d07c2)
 
 ## **4-5 Road Design**
-![image](https://github.com/user-attachments/assets/cb727393-f913-4fb1-bf53-42f14477626c)
+- 도로 주행 간 차선 인식, 장애물 인식 등 다양한 상황을 고려하여 도로 설계를 진행
+![Screenshot from 2024-11-13 16-22-02](https://github.com/user-attachments/assets/3f5275ba-c6d3-4e85-b924-207060893967)
 ---
