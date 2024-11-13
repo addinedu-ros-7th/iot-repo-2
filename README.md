@@ -53,8 +53,9 @@
 | |       |졸음 경고|* 운전자의 졸음이 감지되면 운전자에게 부저를 통해 경고|2|
 
 ## **3-2 Software Configuration**
-![Screenshot from 2024-11-12 19-24-16](https://github.com/user-attachments/assets/c9f790b8-e745-46a1-877a-78beed318bfb)
+![image](https://github.com/user-attachments/assets/efd6ef97-082f-46c6-a171-f4b5327aa9bb)
+
 
 ## **3-3 Hardware Cofiguration**
-![Screenshot from 2024-11-12 19-25-25](https://github.com/user-attachments/assets/8c0c95b3-a455-4fea-97ed-2fdcf3e762a1)
+![image](https://github.com/user-attachments/assets/cf4ee31b-9634-4cfa-b58b-7e0264ffbbea)
 ---
