@@ -7,7 +7,7 @@
 - 운전보조 및 경고 시스템을 통해 운전자 보조 기능 개발
 ---
 # 2. Team Name & Topic
-## **Assistant Driving AngelS (ADAS)** <br> IoT를 활용한 차량 보조 시스템 개발**
+## **Assistant Driving AngelS (ADAS) <br> IoT를 활용한 차량 보조 시스템 개발**
 
 **팀원 및 담당 업무**
 |이름|담당 업무|
