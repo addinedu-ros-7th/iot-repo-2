@@ -1,7 +1,7 @@
 # iot-repo-2
 ---
 # 1. Team Name & Topic
-Assistant Driving AngelS (ADAS) : IoT를 활용한 차량 보조 시스템 개발
+## **Assistant Driving AngelS (ADAS) : IoT를 활용한 차량 보조 시스템 개발**
 
 **팀원 및 담당 업무**
 |이름|담당 업무|
