@@ -17,7 +17,7 @@
 |**이영훈(팀원)**|아두이노 코드 구현|
 |**윤희태(팀원)**|아두이노 코드 구현|
 ---
-# 2. Stacks
+# 3. Stacks
 <div align=center>
 
   <img src="https://img.shields.io/badge/Ubuntu-E95420?style=for-the-badge&logo=Ubuntu&logoColor=white"/>
@@ -39,8 +39,8 @@
 </div>
 
 ---
-# 3. Plan 
-## **3-1 Feature List**
+# 4. Plan 
+## **4-1 Feature List**
 ||분류|Function(기능)|Description(구체화)|우선순위|
 |:---:|:---:|:---:|---|:---:|
 |1|인식 기능|차선 인식|* 적외선 센서를 이용한 차량 양쪽의 차선 인식|1|
@@ -58,13 +58,13 @@
 |3|알림 기능|후방 경고|* 차량 후방에 장애물이 인식되면 운전자에게 부저나 <br> LED를 통해 경고|2|
 | |       |졸음 경고|* 운전자의 졸음이 감지되면 운전자에게 부저를 통해 경고|2|
 
-## **3-2 Software Configuration**
+## **4-2 Software Configuration**
 ![image](https://github.com/user-attachments/assets/efd6ef97-082f-46c6-a171-f4b5327aa9bb)
 
-## **3-3 Hardware Cofiguration**
+## **4-3 Hardware Cofiguration**
 ![image](https://github.com/user-attachments/assets/cf4ee31b-9634-4cfa-b58b-7e0264ffbbea)
 
-## **3-4 GUI Interface**
+## **4-4 GUI Interface**
 - 전원 버튼 : 시스템 전원 ON/OFF <br>
 - 방향 조향 키 : 앞 / 뒤 / 정지 <br>
 - CAM1 : 사용자 얼굴 인터페이스 <br>
@@ -76,6 +76,6 @@
 - Drowsy : 졸음 여부 표시 <br>
 ![Screenshot from 2024-11-13 15-58-57](https://github.com/user-attachments/assets/0ce044d0-dad1-4b2b-8fae-c3c2957d07c2)
 
-## **3-5 Road Design**
+## **4-5 Road Design**
 ![image](https://github.com/user-attachments/assets/cb727393-f913-4fb1-bf53-42f14477626c)
 ---
