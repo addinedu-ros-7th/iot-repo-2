@@ -6,7 +6,7 @@
 - 센서 정보를 이용하여 ‘차량 모터 컨트롤’ 및 ‘경고등 점등’ 수행 <br>
 - 운전보조 및 경고 시스템을 통해 운전자 보조 기능 개발
 ---
-# 2. Team Name & Topic
+# 2. Team Name & Responsibility
 ## **Assistant Driving AngelS (ADAS) <br> IoT를 활용한 차량 보조 시스템 개발**
 
 **팀원 및 담당 업무**
@@ -40,7 +40,7 @@
 
 ---
 # 4. Plan 
-## **4-1 Feature List**
+## **4-1. Feature List**
 ||분류|Function(기능)|Description(구체화)|우선순위|
 |:---:|:---:|:---:|---|:---:|
 |1|인식 기능|차선 인식|* 적외선 센서를 이용한 차량 양쪽의 차선 인식|1|
@@ -58,13 +58,13 @@
 |3|알림 기능|후방 경고|* 차량 후방에 장애물이 인식되면 운전자에게 부저나 <br> LED를 통해 경고|2|
 | |       |졸음 경고|* 운전자의 졸음이 감지되면 운전자에게 부저를 통해 경고|2|
 
-## **4-2 Software Configuration**
+## **4-2. Software Configuration**
 ![image](https://github.com/user-attachments/assets/efd6ef97-082f-46c6-a171-f4b5327aa9bb)
 
-## **4-3 Hardware Cofiguration**
+## **4-3. Hardware Cofiguration**
 ![image](https://github.com/user-attachments/assets/cf4ee31b-9634-4cfa-b58b-7e0264ffbbea)
 
-## **4-4 GUI Interface**
+## **4-4. GUI Interface**
 - 전원 버튼 : 시스템 전원 ON/OFF <br>
 - 방향 조향 키 : 앞 / 뒤 / 정지 <br>
 - CAM1 : 사용자 얼굴 인터페이스 <br>
@@ -76,7 +76,14 @@
 - Drowsy : 졸음 여부 표시 <br>
 ![Screenshot from 2024-11-13 15-58-57](https://github.com/user-attachments/assets/0ce044d0-dad1-4b2b-8fae-c3c2957d07c2)
 
-## **4-5 Road Design**
+## **4-5. Road Design**
 - 도로 주행 간 차선 인식, 장애물 인식 등 다양한 상황을 고려하여 도로 설계를 진행
 ![Screenshot from 2024-11-13 16-22-02](https://github.com/user-attachments/assets/3f5275ba-c6d3-4e85-b924-207060893967)
 ---
+# 5. Review
+|이름|소감|
+|:---:|---|
+|**이상범(팀장)**||
+|**김완섭(팀원)**||
+|**이영훈(팀원)**||
+|**윤희태(팀원)**||
