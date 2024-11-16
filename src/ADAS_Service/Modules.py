@@ -25,7 +25,7 @@ class Camera(QThread):
     def run(self):
         while self.isRunning:
             self.update.emit()
-            time.sleep(0.05)
+            time.sleep(0.07)
 
     def stop(self):
         self.running = False
@@ -54,10 +54,11 @@ class Arduino(QThread):
             return
 
         while True:
+
             try:
                 data = self.client_socket.recv(1024).decode()
-                self.distance_signal.emit(str(int(data)))  # 시그널로 데이터 전달
-                time.sleep(0.05)
+                self.distance_signal.emit(data)  # 시그널로 데이터 전달
+                time.sleep(0.03)
             except:
                 pass
 

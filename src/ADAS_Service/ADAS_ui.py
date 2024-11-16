@@ -55,6 +55,7 @@ class ADAS_ui(QDialog, from_class):
             self.msg_list['Back'] = '0'
             self.msg_list['Go'] = '1'
             self.label_4.setText('Front')
+            self.Direction.setText('Forward')
             # pass
         except:
             pass
@@ -66,6 +67,7 @@ class ADAS_ui(QDialog, from_class):
             self.msg_list['Go'] = '0'
             self.msg_list['Back'] = '1'
             self.label_4.setText('Back')
+            self.Direction.setText('Backward')
         except:
             pass
         self.sent_MSG()
@@ -76,7 +78,7 @@ class ADAS_ui(QDialog, from_class):
             self.msg_list['Go'] = '0'
             self.msg_list['Back'] = '0'
             self.label_4.setText('Front')
-
+            self.Direction.setText('Stop')
             # pass
         except:
             pass
@@ -100,6 +102,7 @@ class ADAS_ui(QDialog, from_class):
                 self.Screen1.setStyleSheet("border: 3px solid green")
                 self.isDrowsy1 = False
         except:
+            self.msg_list['Drowsy'] = '0'
             self.start = time.time()
             self.isDrowsy1 = False
             self.Drowsy.setStyleSheet("background-color: white")
@@ -116,12 +119,15 @@ class ADAS_ui(QDialog, from_class):
             self.CAM1.isRunning = True
             self.ADAS_CAR.start()
             self.video1 = cv2.VideoCapture(-1)
+            self.Direction.setText('Stop')
+
         else:
             self.isPowerOn = False
             self.CAM1.stop()
             self.CAM1.isRunning = False
             self.ADAS_CAR.stop()
             self.ADAS_CAR.quit()
+            self.Direction.setText('')
 
             self.video1.release()
             self.ScreenOFF()
@@ -129,17 +135,28 @@ class ADAS_ui(QDialog, from_class):
 
     def GetDistance(self, distance):
         
-        # distance = self.Arduino1.client_socket.recv(1024)
-        self.Front.setText(distance + 'cm')
-        try:
-            if eval(distance) < 10:
-                self.Front.setStyleSheet("border: 3px solid red")
-            elif eval(distance) < 20:
-                self.Front.setStyleSheet("border: 3px solid green")
-            else:
-                self.Front.setStyleSheet("border: 1px solid black")
-        except:
-            self.Front.setText('No Signal')
+        data = distance.split(' ')
+        if len(data) == 3:
+            distance = data[0] if '\r\n' not in data[0] else data[:-4]
+            infrared_left = data[1]
+            infrared_right = data[2]
+            print(distance, infrared_left, infrared_right)
+            try:
+                self.Front.setText(distance + 'cm')
+                if infrared_left == 'L0':
+                    self.Lane.setText('Left')
+                    self.Direction.setText('Right')
+                elif (infrared_right == 'R0') or (infrared_right == 'R0\r\n'):
+                    self.Lane.setText('Right')
+                    self.Direction.setText('Left')
+                else:
+                    self.Lane.setText('')
+                    self.Direction.setText('Forward')
+            except:
+                self.Front.setText('No Signal')
+        else:
+            distance = data[0].split('\r\n')[0]
+            self.Front.setText(distance + 'cm')
 
 
     def sent_MSG(self):

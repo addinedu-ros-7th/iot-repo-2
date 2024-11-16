@@ -68,13 +68,13 @@
      <rect>
       <x>10</x>
       <y>30</y>
-      <width>61</width>
+      <width>51</width>
       <height>31</height>
      </rect>
     </property>
     <property name="styleSheet">
      <string notr="true">QLabel{
-	font:15pt;
+	font:12pt;
  font-weight: bold;	color: blakc;
 }</string>
     </property>
@@ -99,11 +99,14 @@
     </property>
     <property name="styleSheet">
      <string notr="true">QLineEdit{
-	font: 15pt
+	font-weight: bold; font: 14pt
 }</string>
     </property>
+    <property name="text">
+     <string/>
+    </property>
     <property name="alignment">
-     <set>Qt::AlignBottom|Qt::AlignHCenter</set>
+     <set>Qt::AlignCenter</set>
     </property>
    </widget>
   </widget>
@@ -140,7 +143,7 @@
     </property>
     <property name="styleSheet">
      <string notr="true">QLineEdit{
-	font: 13pt
+	font-weight: bold; font: 14pt
 }</string>
     </property>
     <property name="alignment">
@@ -184,7 +187,7 @@
     </property>
     <property name="styleSheet">
      <string notr="true">QLineEdit{
-	font: 13pt
+	font-weight: bold; font: 14pt
 }</string>
     </property>
     <property name="alignment">
@@ -228,7 +231,7 @@
     </property>
     <property name="styleSheet">
      <string notr="true">QLineEdit{
-	font: 13pt
+	font-weight: bold; font: 14pt
 }</string>
     </property>
     <property name="alignment">
