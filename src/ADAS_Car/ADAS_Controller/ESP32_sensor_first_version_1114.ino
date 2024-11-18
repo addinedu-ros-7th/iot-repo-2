@@ -286,6 +286,12 @@ void loop()
         // 전진 누르면 자율주행 시작
         // 센서 값을 읽어서 전진, 좌, 우 값을 실시간으로 보냄.
         send_trct_signal(lane_R, lane_L);
+        
+        if (distance_front < 10)
+        {
+       	   Serial.println("정지")
+        }
+        
       }
 
       // 멈췄을 때
@@ -312,7 +318,7 @@ void loop()
         Serial.println("후진");
 
         // 특정 거리 이상 가까워지면 정지
-        if (distance_back < 3)
+        if (distance_back < 10)
         {
           Serial.println("정지");
 
