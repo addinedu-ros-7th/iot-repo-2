@@ -10,7 +10,7 @@ from PyQt5.QtCore import *
 from PyQt5 import uic
 from Modules import *
 
-from_class = uic.loadUiType("src/ADAS_Service/ADAS.ui")[0]
+from_class = uic.loadUiType("src/ADAS_Service/ADAS_ver2.ui")[0]
         
 class ADAS_ui(QDialog, from_class):
     def __init__(self):
@@ -35,13 +35,9 @@ class ADAS_ui(QDialog, from_class):
         self.CAM1.update.connect(self.updateCAM1)
 
         self.msg_list = {'Go': '0', 'Stop': '0', 'Back': '0', 'Drowsy': '0'}
-        # Arduino Setting
-        # self.Arduino1 = Arduino()
-        # self.Arduino1.esp32_ip = '192.168.2.218'
-        # self.Arduino1.distance_signal.connect(self.GetDistance)
 
         self.ADAS_CAR = Arduino()
-        self.ADAS_CAR.esp32_ip = '192.168.2.218'
+        self.ADAS_CAR.esp32_ip = '192.168.199.119'
         self.ADAS_CAR.distance_signal.connect(self.GetDistance)
 
         self.btnPower.clicked.connect(self.Click_Power)
@@ -55,7 +51,7 @@ class ADAS_ui(QDialog, from_class):
             self.msg_list['Back'] = '0'
             self.msg_list['Go'] = '1'
             self.label_4.setText('Front')
-            self.Direction.setText('Forward')
+            self.Direction.setText('Go')
             # pass
         except:
             pass
@@ -67,7 +63,7 @@ class ADAS_ui(QDialog, from_class):
             self.msg_list['Go'] = '0'
             self.msg_list['Back'] = '1'
             self.label_4.setText('Back')
-            self.Direction.setText('Backward')
+            self.Direction.setText('Back')
         except:
             pass
         self.sent_MSG()
@@ -95,6 +91,7 @@ class ADAS_ui(QDialog, from_class):
                     self.Drowsy.setStyleSheet("background-color: red")
                     self.Screen1.setStyleSheet("border: 5px solid red")
                     self.isDrowsy1 = True
+                    self.Direction.setText('Stop')
             else:
                 self.start = time.time()
                 cv2.rectangle(frame, (x1, y1), (x2, y2), (0, 255, 0), 2)
@@ -136,38 +133,58 @@ class ADAS_ui(QDialog, from_class):
     def GetDistance(self, distance):
         
         data = distance.split(' ')
-        if len(data) == 3:
-            distance = data[0] if '\r\n' not in data[0] else data[:-4]
-            infrared_left = data[1]
-            infrared_right = data[2]
-            print(distance, infrared_left, infrared_right)
-            try:
+        print(data)
+        if data[0] != '\r\n':
+            if len(data) == 3:
+                distance = data[0].replace('\r\n','') # if '\r\n' not in data[0] else data[:-4]
+                infrared_left = data[1].replace('\r\n','')
+                infrared_right = data[2].replace('\r\n','')
+                # print(distance, infrared_left, infrared_right)
+                try:
+                    self.Front.setText(distance + 'cm')
+                    if infrared_left == 'L0':
+                        self.Lane.setText('Left')
+                        self.Direction.setText('Right')
+                    elif (infrared_right == 'R0'):
+                        self.Lane.setText('Right')
+                        self.Direction.setText('Left')
+                    else:
+                        self.Lane.setText('')
+                        self.Direction.setText('Go')
+      
+                except:
+                    self.Front.setText('No Signal')
+            else:
+                distance = data[0].split('\r\n')[0]
                 self.Front.setText(distance + 'cm')
-                if infrared_left == 'L0':
-                    self.Lane.setText('Left')
-                    self.Direction.setText('Right')
-                elif (infrared_right == 'R0') or (infrared_right == 'R0\r\n'):
-                    self.Lane.setText('Right')
-                    self.Direction.setText('Left')
-                else:
-                    self.Lane.setText('')
-                    self.Direction.setText('Forward')
-            except:
-                self.Front.setText('No Signal')
-        else:
-            distance = data[0].split('\r\n')[0]
-            self.Front.setText(distance + 'cm')
+                
+        
+
+    def distance_alarm(self, distance):
+        if self.msg_list['Back'] == '1' and eval(distance) < 10:
+            self.msg_list['Stop'] = '1'
+            self.msg_list['Go'] = '0'
+            self.msg_list['Back'] = '0'
+            self.sent_MSG()
+            self.Direction.setText('Stop')        
 
 
     def sent_MSG(self):
-        msg = ''.join(list(self.msg_list.values())) + '\n'
-        self.ADAS_CAR.client_socket.send(msg.encode())
+        try:
+            msg = ''.join(list(self.msg_list.values())) + '\n'
+            self.ADAS_CAR.client_socket.send(msg.encode())
+            print(msg)
+        except:
+            pass
 
     def send_Drowsy(self):
         
         self.isDrowsy2 = self.isDrowsy1
         if self.isDrowsy1:
             self.msg_list['Drowsy'] = '1'
+            self.msg_list['Go'] = '0'
+            self.msg_list['Back'] = '0'
+            self.msg_list['Stop'] = '1'
         else:
             self.msg_list['Drowsy'] = '0'
         
