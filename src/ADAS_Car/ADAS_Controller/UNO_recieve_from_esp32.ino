@@ -47,11 +47,11 @@ void loop() {
     {
       //Serial.println("후진");
 
-      analogWrite(motor_R, 60);
+      analogWrite(motor_R, 90);
       digitalWrite(motor_R_forward, LOW);
       digitalWrite(motor_R_reverse, HIGH);
 
-      analogWrite(motor_L, 60);
+      analogWrite(motor_L, 90);
       digitalWrite(motor_L_forward, LOW);
       digitalWrite(motor_L_reverse, HIGH);
     }
@@ -75,7 +75,12 @@ void loop() {
       digitalWrite(motor_R_forward, HIGH);
       digitalWrite(motor_R_reverse, LOW);
 
-      analogWrite(motor_L, 0);
+      //analogWrite(motor_L, 0);
+
+      analogWrite(motor_L, 100);
+      digitalWrite(motor_L_forward, LOW);
+      digitalWrite(motor_L_reverse, HIGH);
+
     }
 
     // 우회전
@@ -87,7 +92,12 @@ void loop() {
       digitalWrite(motor_L_forward, HIGH);
       digitalWrite(motor_L_reverse, LOW);
 
-      analogWrite(motor_R, 0);
+      //analogWrite(motor_R, 0);
+
+      analogWrite(motor_R, 100);
+      digitalWrite(motor_R_forward, LOW);
+      digitalWrite(motor_R_reverse, HIGH);
+      
     }
   }
 }
