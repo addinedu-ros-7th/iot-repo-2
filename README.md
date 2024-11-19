@@ -12,7 +12,7 @@
 **팀원 및 담당 업무**
 |이름|담당 업무|
 |:---:|---|
-|**이상범(팀장)**|PyQt UI 화면 구성, 도로 설계 및 구성, 통신 연결, Github 관리|
+|**이상범(팀장)**|도로 설계 및 구성, GUI 화면 구성, 통신 연결, Github 관리|
 |**김완섭(팀원)**|도로 설계 및 구성, 도로 구현, 적외선 연결, Github 관리, PPT 자료 준비|
 |**이영훈(팀원)**|모터 드라이버 연결, 모터 연결, 모터 동작 코드 작성|
 |**윤희태(팀원)**|LED센서, 부저, 초음파, 적외선 연결, 통신 연결|
@@ -30,10 +30,7 @@
   <img src="https://img.shields.io/badge/jira-0052CC?style=for-the-badge&logo=jira&logoColor=white">
   <img src="https://img.shields.io/badge/confluence-0052CC?style=for-the-badge&logo=confluence&logoColor=white">
   <img src="https://img.shields.io/badge/slack-FFD700?style=for-the-badge&logo=slack&logoColor=white">
-  <br>
-  
   <img src="https://img.shields.io/badge/arduino-00979D?style=for-the-badge&logo=arduino&logoColor=white">
-  <img src="https://img.shields.io/badge/mysql-4479A1?style=for-the-badge&logo=mysql&logoColor=white"> 
   <br>
 
 </div>
