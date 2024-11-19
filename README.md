@@ -58,7 +58,7 @@
 ![image](https://github.com/user-attachments/assets/efd6ef97-082f-46c6-a171-f4b5327aa9bb)
 
 ## **4-3. Hardware Cofiguration**
-![image](https://github.com/user-attachments/assets/cf4ee31b-9634-4cfa-b58b-7e0264ffbbea)
+![하드웨어 구성도](https://github.com/user-attachments/assets/469483ff-63dd-449f-9117-aeb08d039426)
 
 ## **4-4. GUI Interface**
 - 전원 버튼 : 시스템 전원 ON/OFF <br>
