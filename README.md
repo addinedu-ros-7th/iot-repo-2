@@ -13,9 +13,9 @@
 |이름|담당 업무|
 |:---:|---|
 |**이상범(팀장)**|PyQt UI 화면 구성 및 통신 연결, ESP32-CAM 통신 연결, DB 관리, Github 관리|
-|**김완섭(팀원)**|도로 설계 및 구성, 도로 구현, Github 관리|
-|**이영훈(팀원)**|모터 드라이버 연결 / 모터 연결|
-|**윤희태(팀원)**|LED센서, 부저, 초음파 연결|
+|**김완섭(팀원)**|도로 설계 및 구성, 도로 구현, Github 관리, PPT 자료 준비|
+|**이영훈(팀원)**|모터 드라이버 연결, 모터 연결|
+|**윤희태(팀원)**|LED센서, 부저, 초음파, 적외선 연결|
 ---
 # 3. Stacks
 <div align=center>
@@ -67,14 +67,12 @@
 ## **4-4. GUI Interface**
 - 전원 버튼 : 시스템 전원 ON/OFF <br>
 - 방향 조향 키 : 앞 / 뒤 / 정지 <br>
-- CAM1 : 사용자 얼굴 인터페이스 <br>
-- CAM2 : 도로 주행 상황 인터페이스 <br>
+- INNER CAM : 사용자 얼굴 인터페이스 <br>
 - Direction : 진행방향 표시 <br>
 - Distance : 앞/뒤 사물간 거리 표시 <br>
-- Object : CAM2에서 인식된 사물 정보 표시 <br>
 - Lane : 차선 인식 여부 표시 <br>
 - Drowsy : 졸음 여부 표시 <br>
-![Screenshot from 2024-11-13 15-58-57](https://github.com/user-attachments/assets/0ce044d0-dad1-4b2b-8fae-c3c2957d07c2)
+![GUI 인터페이스](https://github.com/user-attachments/assets/210d9ade-bd1b-4855-a5de-5987709cd7ca)
 
 ## **4-5. Road Design**
 - 도로 주행 간 차선 인식, 장애물 인식 등 다양한 상황을 고려하여 도로 설계를 진행
