@@ -75,7 +75,8 @@
 
 ## **4-5. Road Design**
 - 도로 주행 간 차선 인식, 장애물 인식 등 다양한 상황을 고려하여 도로 설계를 진행
-![Screenshot from 2024-11-13 16-22-02](https://github.com/user-attachments/assets/3f5275ba-c6d3-4e85-b924-207060893967)
+![도로 구성도 Ver3](https://github.com/user-attachments/assets/05d95e22-1134-4302-8eb6-f468378bb888)
+
 ---
 # 5. Review
 ## 5-1. 결과 및 기대효과
