@@ -10,7 +10,7 @@ from PyQt5.QtCore import *
 from PyQt5 import uic
 from Modules import *
 
-from_class = uic.loadUiType("src/ADAS_Service/ADAS_ver2.ui")[0]
+from_class = uic.loadUiType("src/ADAS_Service/ADAS.ui")[0]
         
 class ADAS_ui(QDialog, from_class):
     def __init__(self):
