@@ -13,6 +13,7 @@ const int motor_L_reverse = 5;  // 왼쪽 역박향
 void setup() {
   // put your setup code here, to run once:
   Serial.begin(9600);
+  
   pinMode(motor_R, OUTPUT);
   pinMode(motor_R_forward, OUTPUT);
   pinMode(motor_R_reverse, OUTPUT);
@@ -61,7 +62,6 @@ void loop() {
       //Serial.println("정지");
 
       analogWrite(motor_R, 0);
-
       analogWrite(motor_L, 0);
 
     }
@@ -69,56 +69,56 @@ void loop() {
     // 좌회전
     else if (data == "좌")
     {
-      //Serial.println("조향");
+      // 잠깐 후진 후 
       analogWrite(motor_R, 150);
       digitalWrite(motor_R_forward, LOW);
       digitalWrite(motor_R_reverse, HIGH);
-
-      //analogWrite(motor_L, 0);
 
       analogWrite(motor_L, 150);
       digitalWrite(motor_L_forward, LOW);
       digitalWrite(motor_L_reverse, HIGH);
       delay(100);
 
+      // 오른쪽 모터 정회전
       analogWrite(motor_R, 150);
       digitalWrite(motor_R_forward, HIGH);
       digitalWrite(motor_R_reverse, LOW);
 
-      //analogWrite(motor_L, 0);
 
+      // 왼쪽 모터 역회전
       analogWrite(motor_L, 150);
       digitalWrite(motor_L_forward, LOW);
       digitalWrite(motor_L_reverse, HIGH);
-      delay(300);
+      delay(100);
+
 
     }
 
     // 우회전
     else if (data == "우")
     {
-      //Serial.println("조향");
-      analogWrite(motor_L, 100);
+      // 잠깐 후진 후
+      analogWrite(motor_L, 150);
       digitalWrite(motor_L_forward, LOW);
       digitalWrite(motor_L_reverse, HIGH);
 
-      //analogWrite(motor_R, 0);
-
-      analogWrite(motor_R, 100);
+      analogWrite(motor_R, 150);
       digitalWrite(motor_R_forward, LOW);
       digitalWrite(motor_R_reverse, HIGH);
       delay(100);
 
-      analogWrite(motor_L, 100);
+      // 왼쪽 모터 정회전
+      analogWrite(motor_L, 150);
       digitalWrite(motor_L_forward, HIGH);
       digitalWrite(motor_L_reverse, LOW);
 
-      //analogWrite(motor_R, 0);
 
-      analogWrite(motor_R, 100);
+      // 오른쪽 모터 역회전
+      analogWrite(motor_R, 150);
       digitalWrite(motor_R_forward, LOW);
       digitalWrite(motor_R_reverse, HIGH);
-      delay(300);
+      delay(100);
+      
     }
   }
 }
