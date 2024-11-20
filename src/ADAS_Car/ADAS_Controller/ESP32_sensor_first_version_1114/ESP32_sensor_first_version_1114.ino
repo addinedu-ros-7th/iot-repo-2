@@ -1,19 +1,18 @@
 #include <WiFi.h>
 
+// 졸음 감지 led, buzzer
+const int BUZZER_drowsy = 21;
 const int LED_drowsy = 13;
 bool led_status = LOW;
 
-const int BUZZER_drowsy = 21;
-
+// 후방 접근 led, buzzer
+const int LED_back = 4;
 const int BUZZER_back = 14;
 bool buzzer_status = LOW;
 
 // 후방 초음파 센서 
 const int TRIG_back = 18;  // 초음파 보내는 핀
 const int ECHO_back = 19;  // 초음파 받는 핀
-
-// 후방 접근 led
-const int LED_back = 4;
 
 // 전방 초음파 센서
 const int TRIG_front = 22;
@@ -26,9 +25,12 @@ unsigned long previousMillis_buzzer = 0;
 const int tcrt_R = 32;  // 오른쪽 적외선 센서
 const int tcrt_L = 33;  // 왼쪽 적외선 센서
 
+// wifi 통신을 위한 설정
+//const char* ssid = "addinedu_class_1(2.4G)";
+//const char* password = "addinedu1";
 
-const char* ssid = "addinedu_class_1(2.4G)";
-const char* password = "addinedu1";
+const char* ssid = "S24";
+const char* password = "12345678";
 WiFiServer server(8080);  // 서버 포트 8080
 
 void setup() 
@@ -69,17 +71,13 @@ void setup()
 void ultra_back_led_buzzer(int distance)
 {
   // 정상
-  
   if (distance > 20)
   {
-    
     digitalWrite(LED_back, LOW);
     noTone(BUZZER_back);  // 부저 안울림
-    // tone(BUZZER_drowsy, 262);
   }
 
   // 경고  
-  // 이때, 모터 속도가 줄어들면서 서행 해야 함.
   else if (distance > 10)  
   {
     unsigned long currentMillis_led = millis();
@@ -106,6 +104,7 @@ void ultra_back_led_buzzer(int distance)
     }
   }
 
+  // 완전 가까울 때
   else
   {
     unsigned long currentMillis_buzzer = millis();
@@ -126,12 +125,8 @@ void ultra_back_led_buzzer(int distance)
         noTone(BUZZER_back);     // 소리 멈춤
       }
     }
-
     digitalWrite(LED_back, HIGH);
-    // noTone(BUZZER_drowsy);  // 부저 안울림
-    //tone(BUZZER_drowsy, 262);
   }
-
 }
 
 
@@ -174,31 +169,29 @@ int back_ultra()
   return distance_back;
 }
 
-// 장애물 인식이 우선시 되야 함.
-// 우노 보드로 문자열 보내는 함수
-void send_trct_signal(int R, int L)
+// 우노 보드로 모터 구동 명령 보내는 함수
+void send_tcrt_signal(int R, int L)
 {
   // 직진
   if ((R == 1) && (L == 1))
   {
     Serial.println("전진");
   }
-  
-  // 오른쪽 적외선 센서 인식되면 좌회전
+
+  // 우회전
   else if ((R == 0) && (L == 1))
   {
     Serial.println("좌");
-    delay(100);
+    delay(300);
   }
 
-  // 왼쪽 적외선 센서 인식되면 우회전
+  // 좌회전
   else if ((R == 1) && (L == 0))
   {
     Serial.println("우");
-    delay(100);
+    delay(300);
   }
 }
-
 
 bool go = false;
 bool stop = false;
@@ -207,18 +200,17 @@ bool drowsy = false;
 
 void loop() 
 {
-  //long duration_front, distance_front, duration_back, distance_back;
-
   WiFiClient client = server.available();
 
   while (client.connected())
   {
-    client.setTimeout(10);
+    client.setTimeout(50);
 
-    // 데이터를 파이썬으로부터 받을 때 --------------------------------------------------------------------------------------
+    // GUI 정보 받아오기
     String data = client.readString();
     Serial.println(data);
 
+    // 직진
     if (data[0]=='1')
     {
       go = true;
@@ -228,7 +220,7 @@ void loop()
       go = false;
     }
 
-    // 멈췄을 때
+    // 정지
     if (data[1]=='1')
     {
       stop = true;
@@ -238,7 +230,7 @@ void loop()
       stop = false;
     }
 
-    // 뒤로 갈 때
+    // 후진
     if (data[2]=='1')
     {
       back = true;
@@ -248,6 +240,7 @@ void loop()
       back = false;
     }
 
+    // 졸음 감지
     if (data[3]=='1')
     {
       drowsy = true;
@@ -257,76 +250,91 @@ void loop()
       drowsy = false;
     }
 
-
     // 졸음운전할 때
     if (drowsy)
     {
       tone(BUZZER_drowsy, 262);
       digitalWrite(LED_drowsy, HIGH);
+
+      Serial.println("정지");
     }
     else
     {
       noTone(BUZZER_drowsy);
       digitalWrite(LED_drowsy, LOW);
+
       // 앞으로 갈 때
       if (go)
       {
         // 후진 LED, 부저 무조건 끄기
         digitalWrite(LED_back, LOW);
         noTone(BUZZER_back);
-        // client 로 값 보내기
 
-        // 전방 초음파 센서 측정 값
         int distance_front = front_ultra();
         int lane_R = digitalRead(tcrt_R);
         int lane_L = digitalRead(tcrt_L);
 
+        // 우노 보드로 모터 구동 명령어 보내기
+        send_tcrt_signal(lane_R, lane_L);
+
         String data_ultra_lane = String(distance_front) + " " + "L" + String(lane_L) + " " + "R" + String(lane_R);
 
+        // GUI 로 정보 보내기
         client.println(data_ultra_lane);
 
-        // 전진 누르면 자율주행 시작
-        // 센서 값을 읽어서 전진, 좌, 우 값을 실시간으로 보냄.
-        send_trct_signal(lane_R, lane_L);
+        //Serial.println(data_ultra_lane);
+
+        // 전진 중 전방 장애물 인식 시 정지 명령 보내기
         if (distance_front < 10)
         {
-       	   Serial.println("정지")
+       	   Serial.println("정지");
         }
       }
 
       // 멈췄을 때
       else if (stop)
       {
+        // 후진 LED, 부저 무조건 끄기
+        digitalWrite(LED_back, LOW);
+        noTone(BUZZER_back);
+
+        // GUI 로 전방 거리 측정 값 보내기
         client.println(front_ultra());
 
-        // 우노 보드로 신호 보내줌
+        // 우노 보드로 모터 정지 명령 보내기
         Serial.println("정지");
-
-        // 모터 멈추기 코드
       }
 
+      
       // 뒤로 갈 때
       else if (back)
       {
         // led 점등 및 부저 울리기
         int distance_back = back_ultra();
         ultra_back_led_buzzer(distance_back);
-        // client 로 값 보내기
+
+        // GUI 로 전방 거리 측정 값 보내기
         client.println(distance_back);
 
-        // 우노 보드로 신호 보내줌
-        Serial.println("후진");
+        // 우노 보드로 모터 후진 명령 보내기
+        Serial.println(distance_back);
 
         // 특정 거리 이상 가까워지면 정지
         if (distance_back < 5)
         {
           Serial.println("정지");
 
+          // 후진 LED, 부저 무조건 끄기
+          digitalWrite(LED_back, LOW);
+          noTone(BUZZER_back);
+        }
+        else 
+        {
+          // 우노 보드로 신호 보내줌
+          Serial.println("후진");
         }
       }
     }
+    delay(50);
   }
 }
-
-
-
