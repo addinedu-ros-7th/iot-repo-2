@@ -1,17 +1,19 @@
 // ESP 에서 보낸 신호를 아두이노 우노에서 받는 코드
 // ESP 의 TXD 를 아두이노 우노의 RX 에 연결
 // 값을 받기만 하므로 우노의 TX 는 연결하지 않아도 됨.
+
+
 const int motor_R = 6;  // 오른쪽 모터
 const int motor_R_forward = 7;  // 오른쪽 정방향
 const int motor_R_reverse = 8;  // 오른쪽 역박향
 
-const int motor_L = 3;
+const int motor_L = 3;  // 왼쪽 모터
 const int motor_L_forward = 4;  // 왼쪽 정방향
 const int motor_L_reverse = 5;  // 왼쪽 역박향
 
 
-void setup() {
-  // put your setup code here, to run once:
+void setup() 
+{
   Serial.begin(9600);
   
   pinMode(motor_R, OUTPUT);
@@ -23,8 +25,8 @@ void setup() {
   pinMode(motor_L_reverse, OUTPUT);
 }
 
-void loop() {
-  // put your main code here, to run repeatedly:
+void loop() 
+{
   // 양 쪽 적외선 센서 값을 가져오기
   if (Serial.available())
   {
