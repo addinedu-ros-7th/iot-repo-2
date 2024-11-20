@@ -1,4 +1,5 @@
-# iot-repo-2
+![Screenshot from 2024-11-20 09-38-47](https://github.com/user-attachments/assets/2ba343ba-9110-4084-9c7b-d432856a9d08)
+
 ---
 # 1. Project Overview 
 - 갑작스러운 상황 변화 <br>
