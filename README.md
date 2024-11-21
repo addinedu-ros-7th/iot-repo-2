@@ -1,10 +1,10 @@
 ![Screenshot from 2024-11-20 09-38-47](https://github.com/user-attachments/assets/2ba343ba-9110-4084-9c7b-d432856a9d08)
 
----
 # Demo
 https://github.com/user-attachments/assets/0f931618-6bb2-4cb0-916c-136745d73c05
 
----
+<br>
+
 # 1. Project Overview 
 - 갑작스러운 상황 변화 <br>
 - 운전자의 졸음 운전 <br>
@@ -14,9 +14,9 @@ https://github.com/user-attachments/assets/0f931618-6bb2-4cb0-916c-136745d73c05
 - 운전 보조 기능 개발 <br>
 - 안전 운전을 통한 사고율 감소 <br>
 
----
-# 2. Team Name & Responsibility
-## **Assistant Driving AngelS (ADAS) <br> IoT를 활용한 차량 보조 시스템 개발**
+<br>
+
+# 2. Responsibility & Plan
 
 **팀원 및 담당 업무**
 |이름|담당 업무|
@@ -25,7 +25,13 @@ https://github.com/user-attachments/assets/0f931618-6bb2-4cb0-916c-136745d73c05
 |**김완섭(팀원)**|도로 설계 및 구성, 도로 구현, 적외선 연결, Github 관리, PPT 자료 준비|
 |**이영훈(팀원)**|모터 드라이버 연결, 모터 연결, 모터 동작 코드 작성|
 |**윤희태(팀원)**|LED센서, 부저, 초음파, 적외선 연결, 통신 연결|
----
+
+**프로젝트 일정**
+![Screenshot from 2024-11-20 11-50-47](https://github.com/user-attachments/assets/4d6057a2-c319-4ecf-a290-fb58cf0fc832)
+
+
+<br>
+
 # 3. Stacks
 <div align=center>
 
@@ -44,9 +50,10 @@ https://github.com/user-attachments/assets/0f931618-6bb2-4cb0-916c-136745d73c05
 
 </div>
 
----
-# 4. Plan 
-## **4-1. Feature List**
+<br>
+
+# 4. System Design 
+## **4-1. System Requirements**
 ||분류|Function(기능)|Description(구체화)|우선순위|
 |:---:|:---:|:---:|---|:---:|
 |1|인식 기능|차선 인식|* 적외선 센서를 이용한 차량 양쪽의 차선 인식|1|
@@ -62,13 +69,13 @@ https://github.com/user-attachments/assets/0f931618-6bb2-4cb0-916c-136745d73c05
 |3|알림 기능|후방 경고|* 차량 후방에 장애물이 인식되면 운전자에게 부저나 <br> LED를 통해 경고|2|
 | |       |졸음 경고|* 운전자의 졸음이 감지되면 운전자에게 부저를 통해 경고|2|
 
-## **4-2. Software Configuration**
-![image](https://github.com/user-attachments/assets/efd6ef97-082f-46c6-a171-f4b5327aa9bb)
+## **4-2. Software Architecture**
+![Screenshot from 2024-11-20 10-34-08](https://github.com/user-attachments/assets/93738141-c970-44fc-824f-0f8ac209857f)
 
-## **4-3. Hardware Cofiguration**
+## **4-3. Hardware Architecture**
 ![하드웨어 구성도](https://github.com/user-attachments/assets/90a6210c-9264-49de-bc56-8c441f315d18)
 
-## **4-4. GUI Interface**
+## **4-4. GUI Design**
 - 전원 버튼 : 시스템 전원 ON/OFF <br>
 - 방향 조향 키 : 앞 / 뒤 / 정지 <br>
 - INNER CAM : 사용자 얼굴 인터페이스 <br>
@@ -82,7 +89,8 @@ https://github.com/user-attachments/assets/0f931618-6bb2-4cb0-916c-136745d73c05
 - 도로 주행 간 차선 인식, 장애물 인식 등 다양한 상황을 고려하여 도로 설계를 진행
 ![Screenshot from 2024-11-19 14-56-14](https://github.com/user-attachments/assets/d4f7fc76-0e54-4110-9648-f726f19836a7)
 
----
+<br>
+
 # 5. Review
 ## 5-1. 결과 및 기대효과
 - 장애물 탐지 및 차선 탐지
@@ -101,3 +109,12 @@ https://github.com/user-attachments/assets/0f931618-6bb2-4cb0-916c-136745d73c05
   - settimeout 함수를 통해 데이터가 버퍼상에 머물러 있는 시간을 줄임 <br>
   - 전력이 부족할 경우 무선 통신이 잘되지 않아 보조 배터리 활용하여 test 진행 <br>
   - 원활한 통신을 위해 개인용 핫스팟 사용
+
+- **졸음 인식이 잘 안되는 문제** <br>
+  - 학습에 사용한 데이터가 외국인이라, 도메인 차이로 인한 인식률 저하
+    - 개인 얼굴 사진을 200장 정도 생성한 후, fine-tuning을 진행하여 해결.
+  - WebCAM 이미지를 모델에 바로 넣을 경우, 화면에 비치는 운전자의 위치에 따라 인식이 안되는 경우 발생
+    - Data Augmentation (Random Horizontal Flip, Random Crop, Transpose)진행.
+    - YOLO-v8을 사용하여 얼굴 영역을 추출한 후, Classification 모델에 입력함.
+  - 얼굴의 특징은 인공지능 모델의 낮은 층에서 모두 추출됨
+    - ResNet-50에서 ResNet-18 모델로 낮은 층의 모델을 사용함으로써 모델의 인식률과 일반화 성능을 높임.
