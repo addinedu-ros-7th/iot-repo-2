@@ -133,7 +133,7 @@ class ADAS_ui(QDialog, from_class):
     def GetDistance(self, distance):
         
         data = distance.split(' ')
-        print(data)
+        # print(data)
         if data[0] != '\r\n':
             if len(data) == 3:
                 distance = data[0].replace('\r\n','') # if '\r\n' not in data[0] else data[:-4]
