@@ -3,5 +3,5 @@
 - Dataset Link as below:
   - https://www.kaggle.com/datasets/ismailnasri20/driver-drowsiness-dataset-ddd
  
-- Also, we captured our own facial image to train Drowsniess Detection Model.
+- Also, we captured 200 our own facial image to train Drowsniess Detection Model.
   
