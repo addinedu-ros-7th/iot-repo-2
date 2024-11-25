@@ -75,7 +75,10 @@ https://github.com/user-attachments/assets/0f931618-6bb2-4cb0-916c-136745d73c05
 ## **4-3. Hardware Architecture**
 ![하드웨어 구성도](https://github.com/user-attachments/assets/90a6210c-9264-49de-bc56-8c441f315d18)
 
-## **4-4. GUI Design**
+## **4-4. State Diagram**
+![image](https://github.com/user-attachments/assets/a256f080-72d5-42d3-a807-bfd0a1074180)
+
+## **4-5. GUI Design**
 - 전원 버튼 : 시스템 전원 ON/OFF <br>
 - 방향 조향 키 : 앞 / 뒤 / 정지 <br>
 - INNER CAM : 사용자 얼굴 인터페이스 <br>
@@ -85,7 +88,7 @@ https://github.com/user-attachments/assets/0f931618-6bb2-4cb0-916c-136745d73c05
 - Drowsy : 졸음 여부 표시 <br>
 ![GUI 인터페이스](https://github.com/user-attachments/assets/210d9ade-bd1b-4855-a5de-5987709cd7ca)
 
-## **State Diagram**
+## **4-4. State Diagram**
 ![image](https://github.com/user-attachments/assets/a256f080-72d5-42d3-a807-bfd0a1074180)
 
 
