@@ -88,10 +88,6 @@ https://github.com/user-attachments/assets/0f931618-6bb2-4cb0-916c-136745d73c05
 - Drowsy : 졸음 여부 표시 <br>
 ![GUI 인터페이스](https://github.com/user-attachments/assets/210d9ade-bd1b-4855-a5de-5987709cd7ca)
 
-## **4-4. State Diagram**
-![image](https://github.com/user-attachments/assets/a256f080-72d5-42d3-a807-bfd0a1074180)
-
-
 ## **4-6. Road Design**
 - 도로 주행 간 차선 인식, 장애물 인식 등 다양한 상황을 고려하여 도로 설계를 진행
 ![Screenshot from 2024-11-19 14-56-14](https://github.com/user-attachments/assets/d4f7fc76-0e54-4110-9648-f726f19836a7)
